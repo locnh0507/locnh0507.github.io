@@ -1,6 +1,10 @@
 img {
 	max-width : 500px;
 	}
+
+a:visited {	
+	color : grey;
+	}
 				
 p {
 	font-style: italic;
