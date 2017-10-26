@@ -6,19 +6,24 @@
 		*{
 			box-sizing: border-box;
 		}
-
 		
+		body {
+			background-image: url();	
+			margin: 0;
+			padding: 0;
+		}
 
 		.wrap {
 			max-width: 1500px;
 			margin: auto;
+			padding: auto;
 
 		}
 
 		#banner {
-
 			max-width: 1500px;
 			margin: auto;
+			padding: auto;
 			
 		}
 
@@ -28,40 +33,64 @@
 			right: 30px;
 		}
 
-
-
-		#menu ul {
-			background: black;
-		}
-
 		
-		#menu ul li {
+		ul li {
 			list-style-type: none;
-		}
-
-
-
-		a:link {
-			color: grey;
 			
 		}
-
-		a:active {
-			color: grey;
+		
+		ul {
+			margin: 0;
+			padding: 0;
 		}
 
-		a:hover {
-			color: grey;
-		}
-
-		a:visited {
-			color: grey;
-		}
-
-		h1 {
-			text-align: center;
-		}
-
+		#menu {
+			
+			margin: 0px auto;
+			height: 200px;
+			
+			}
+		#menu > ul > li {
+			float: left;
+			}
+		
+		#menu > ul > li > a {
+				text-decoration: none;
+				color: grey;
+				line-height: 40px;
+				display: block;
+				padding: 0 190px 0 100px;
+				font-size: 21px;
+				font-weight: bold;
+					
+			}
+			
+		#menu > ul > li > a:hover {
+			
+			}
+		#menu > ul > li:hover ul {
+			display: block;
+			}
+			
+			#menu > ul > li >ul {
+				display: none;
+				width: 270px;
+			}
+			
+			#menu > ul > li ul a {
+				display: block;
+				line-height: 40px;
+				color: grey;
+				border-bottom: 1px solid black;
+				text-align: center;
+				text-decoration: none;
+				font-size: 19px;
+				font-weight: bold;
+				
+				
+			}
+			
+			
 		.NoiDung {
 			max-width: 1500px;
 			height: 500px;
@@ -89,7 +118,11 @@
 		.sanpham{
 			padding: 30px;
 		}
-
+			
+			.tittle {
+				text-align: center;
+				font-weight: bold;
+			}
 	</style>
 </head>
 <body>
@@ -114,36 +147,21 @@
 							<li>
 								<a href="#">Khuyến Mại</a>
 							</li>
+
 							<li>
 								<a href="#">Thông Tin Cửa Hàng</a>
 							</li>
-
-						</ul>
-					</li>
-
-					<li>
-						<a href="#"> Chi Nhánh </a>
-						<ul>
 							<li>
-								<a href="#">Chi Nhánh Miền Bắc</a>
-							</li>
-							<li>
-								<a href="#">Chi Nhánh Miền Trung</a>
-							</li>
-							<li>
-								<a href="#">Chi Nhánh Miền Nam</a>
+								<a href="#">Hợp Tác</a>
 							</li>
 						</ul>
-
 					</li>
 
 					<li><a href="#"> Liên Hệ </a></li>
 				</ul>
 			</div>
 			<div class="NoiDung">
-				<div>
-					<h1> Giới Thiệu </h1>
-				</div>
+				<h1 class="tittle">Về Chúng Tôi </h1>
 				<div class="NoiDung text">
 					<span><p>Từ những người đam mê cà phê:</p>
 
@@ -160,7 +178,7 @@
 				</div>	
 			</div>
 			<div class="sanpham">
-					<h1>Sản Phẩm</h1>
+					<h1><span>Sản Phẩm</span></h1>
 			</div>
 
 		</div>
@@ -172,7 +190,7 @@
 	
 
 	<div id="backtop">
-		<a href="#banner"  ><img src="../img/gototop.png" width="80px" title="BackToTop" alt="Back To Top" /></a>
+		<a href="#banner"  ><img src="../img/back-to-top.png" width="80px" title="BackToTop" alt="Back To Top" /></a>
 
 	</div>
 
