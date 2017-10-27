@@ -11,12 +11,14 @@
 			background-image: url();	
 			margin: 0;
 			padding: 0;
+			background: black;
 		}
 
 		.wrap {
 			max-width: 1500px;
 			margin: auto;
 			padding: auto;
+			background: whitesmoke;
 
 		}
 
@@ -45,52 +47,52 @@
 		}
 
 		#menu {
-			
+			background: gainsboro;
 			margin: 0px auto;
-			height: 200px;
+			height: 165px;
 			
-			}
+		}
 		#menu > ul > li {
 			float: left;
-			}
+		}
 		
 		#menu > ul > li > a {
-				text-decoration: none;
-				color: grey;
-				line-height: 40px;
-				display: block;
-				padding: 0 190px 0 100px;
-				font-size: 21px;
-				font-weight: bold;
-					
-			}
-			
+			text-decoration: none;
+			color: grey;
+			line-height: 40px;
+			display: block;
+			padding: 0 190px 0 100px;
+			font-size: 21px;
+			font-weight: bold;
+
+		}
+
 		#menu > ul > li > a:hover {
 			
-			}
+		}
 		#menu > ul > li:hover ul {
 			display: block;
-			}
-			
-			#menu > ul > li >ul {
-				display: none;
-				width: 270px;
-			}
-			
-			#menu > ul > li ul a {
-				display: block;
-				line-height: 40px;
-				color: grey;
-				border-bottom: 1px solid black;
-				text-align: center;
-				text-decoration: none;
-				font-size: 19px;
-				font-weight: bold;
-				
-				
-			}
-			
-			
+		}
+
+		#menu > ul > li >ul {
+			display: none;
+			width: 270px;
+		}
+
+		#menu > ul > li ul a {
+			display: block;
+			line-height: 40px;
+			color: grey;
+			border-bottom: 1px solid black;
+			text-align: center;
+			text-decoration: none;
+			font-size: 19px;
+			font-weight: bold;
+
+
+		}
+
+
 		.NoiDung {
 			max-width: 1500px;
 			height: 500px;
@@ -116,13 +118,75 @@
 		}
 
 		.sanpham{
-			padding: 30px;
-		}
+			padding: 0;
+			margin: 0;
+			max-height: 1500px;
+
 			
-			.tittle {
-				text-align: center;
-				font-weight: bold;
-			}
+		}
+
+		.row1 {
+			float: left;
+			padding: 0px;
+			margin: 0px;
+
+		}
+
+		.row1 img{
+			padding: 10px;	
+		}
+
+
+		.row2 {
+			float: left;
+			padding: 0;
+		}
+
+		.title {
+			text-align: center;
+			font-weight: bold;
+			font-family: monospace;
+			padding-bottom: 20px;
+		}
+
+		.lienhe {
+			
+			height: 300px;
+		}
+
+		.box {
+			border : 1px solid brown;
+			border-top-width: 5px;
+			float : left;
+			width : 33.3333333%;
+			padding: 20px;
+
+
+		}
+
+		.info {
+			border-color: brown;
+		}
+
+		.contact {
+			border-color: brown;
+		}
+
+		.company {
+			border-color: brown;
+		}
+
+		.info span {
+			color : brown;	
+		}
+
+		.contact span {
+			color : brown;	
+		}
+
+		.company span {
+			color : brown;	
+		}
 	</style>
 </head>
 <body>
@@ -161,40 +225,92 @@
 				</ul>
 			</div>
 			<div class="NoiDung">
-				<h1 class="tittle">Về Chúng Tôi </h1>
+				<h1 class="title">Về Chúng Tôi </h1>
 				<div class="NoiDung text">
 					<span><p>Từ những người đam mê cà phê:</p>
 
 						<p>Với niềm đam mê về thưởng thức cà phê, chúng tôi đã đi và trải nghiệm rất nhiều nền văn hóa về cà phê trên thế giới và chúng tôi nghĩ rằng tại sao không tạo nên một nền văn hóa thưởng thức cà phê.</p>
 						<p> Đó là nơi giao thoa giữa văn hóa cà phê của các vùng trên thế giới. Chúng tôi đã du nhập những công nghệ tiên tiến nhất trên thế giới để mang lại cho người tiêu dùng Việt Nam những tinh hoa tuyệt vời nhất về cà phê.</p>
 
-					<p>Giá trị của chúng tôi là mang đến cho khách hàng những ly cà phê sạch hảo hạng và thơm ngon nhất, chúng tôi mong muốn đưa trải nghiệm về cà phê của khách hàng lên một tầm cao mới. </p></span>
+						<p>Giá trị của chúng tôi là mang đến cho khách hàng những ly cà phê sạch hảo hạng và thơm ngon nhất, chúng tôi mong muốn đưa trải nghiệm về cà phê của khách hàng lên một tầm cao mới. </p></span>
+					</div>
+
+					<div class="NoiDung anh ">
+						<div class="NoiDung anh1">
+							<img src="../img/cafe1.jpg"/>
+						</div>
+					</div>	
+				</div>
+				<div class="sanpham">
+					<h1 class="title"><span>Sản Phẩm</span></h1>
+					<div class="sanpham row1">
+						
+						<a><img src="../img/anh2.png" /></a>
+					<A>	<img src="../img/anh3.png" /></A>
+						<a><img src="../img/anh4.png" /></a>
+					</div>
+					<div class="sanpham row2">
+					<a>	<img src="../img/anhmaycafe1.jpg" /></a>
+					<a>	<img src="../img/anhmaycafe2.jpg" /> </a>
+					</div>
+				</div>
+				
+					<a href=""><h2  class="title">Tất cả sản phẩm</h2></a>
+			
+				<div >
+					<img src="../img/banner2.jpg"/>
 				</div>
 
-				<div class="NoiDung anh ">
-					<div class="NoiDung anh1">
-						<img src="../img/cafe1.jpg"/>
+				<div class="lienhe">
+
+					<h1 class="title">Liên Hệ</h1>
+					<div class="box info">
+						<h2>Thông tin cơ bản</h2>
+
+						<div>Nick name <span>Lucky</span></div>
+
+						<div>Giới tính <span>Nam</span></div>
+
+						<div>Ngày sinh <span>05/07/1992</span></div>
 					</div>
-				</div>	
+
+					<div class="box contact">
+						<h2>Thông tin liên hệ</h2>
+
+						<div>Skype <span>locnh0507</span></div>
+
+						<div>Gmail <span>locnh0507@gmail.com</span></div>
+
+						<div>Di động <span>0988787159</span></div>
+					</div>
+
+					<div class="box company">
+						<h2>Cơ quan</h2>
+
+						<div>Nghề nghiệp <span> Lập trình viên</span></div>
+
+						<div>Kỹ năng <span>HTML, CSS, Javascript</span></div>
+
+						<div>Nơi làm việc <span>Techmaster Vietnam</span></div>
+
+					</div>
+
+				</div>
+
 			</div>
-			<div class="sanpham">
-					<h1><span>Sản Phẩm</span></h1>
-			</div>
+		</div>
+
+
+
+
+
+
+		<div id="backtop">
+			<a href="#banner"  ><img src="../img/back-to-top.png" width="80px" title="BackToTop" alt="Back To Top" /></a>
 
 		</div>
-	</div>
 
 
 
-
-	
-
-	<div id="backtop">
-		<a href="#banner"  ><img src="../img/back-to-top.png" width="80px" title="BackToTop" alt="Back To Top" /></a>
-
-	</div>
-
-
-
-</body>
-</html>
+	</body>
+	</html>
