@@ -43,6 +43,7 @@
 			font-size: 20px;
 			background: orange;
 			border-radius: 5px;
+			border: 1px solid #666
 
 		}
 
@@ -55,8 +56,9 @@
 			height: 15%;
 			font-weight: bold;
 			font-size: 20px;
-			background: dodgerblue;
+			background: #428bca;;
 			border-radius: 5px;
+			border: 1px solid #666
 
 
 		}
@@ -71,6 +73,7 @@
 			font-size: 20px;
 			background: red;
 			border-radius: 5px;
+			border: 1px solid #666
 		}
 
 		#equal{
@@ -91,7 +94,7 @@
 
 	</style>
 </head>
-<body onload="disable()">
+<body>
 
 
 	<div class="maincontent">
@@ -100,14 +103,14 @@
 		<div class="Calculator right">
 			<div class ="buttonright">
 				<button id="cong" value="+" onclick="Set_num(this.value)">+</button>
-				<button id ="binhPhuong" value="&sup2;" onclick="binhPhuong(this.value)">x&sup2;</button>
+				<button id ="binhPhuong" value="&sup2;" onclick="Set_num(this.value)">x&sup2;</button>
 			</div>
 			<div class ="buttonright">
 				<button id="tru" value="-" onclick="Set_num(this.value)">-</button>
 				<button id="canBacHai" value="&Sqrt;" onclick="canBacHai(this.value)">&Sqrt;</button>
 			</div>
 			<div class ="buttonright">
-				<button id="nhan" value="*" onclick="Set_num(this.value)">*</button>
+				<button id="nhan" value="x" onclick="Set_num(this.value)">x</button>
 				<button id="giaiThua" value="!" onclick="giaiThua(this.value)">x!</button>
 			</div>
 			<div class ="buttonright">
@@ -154,7 +157,7 @@
 	</div>		
 	<script>
 		var x = "";
-		
+		var a = document.getElementById('result').value;
 		function Set_num(num){
 			x += num;
 			document.getElementById('result').value = x;
@@ -167,6 +170,7 @@
 		}
 
 		function KetQua(){
+
 			x = eval(document.getElementById('result').value);
 			document.getElementById('result').value = x;
 
@@ -182,11 +186,16 @@
 			document.getElementById('result').value = x;
 		}
 
-		function giaiThua (num){
-		
+		function giaiThua (){
+			x = document.getElementById('result').value;
+			result = 1;
+			for (var i = x; i > 0; i--) {
+				result = result * i;
+			}
+			document.getElementById('result').value = result;
 		}
 		
-		function phanTram(num){
+		function phanTram(){
 			x = eval(document.getElementById('result').value*(1/100));
 
 			document.getElementById('result').value = x;
@@ -197,4 +206,4 @@
 
 
 </body>
-</html>
+</html> 
