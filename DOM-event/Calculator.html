@@ -99,18 +99,18 @@
 
 	<div class="maincontent">
 		<h1>Calculator</h1>
-		<div class="box-result"> <input id="result" disabled></input></div>
+		<div class="box-result"><input id="result"/></div>
 		<div class="Calculator right">
 			<div class ="buttonright">
 				<button id="cong" value="+" onclick="Set_num(this.value)">+</button>
-				<button id ="binhPhuong" value="&sup2;" onclick="Set_num(this.value)">x&sup2;</button>
+				<button id ="binhPhuong" value="&sup2;" onclick="binhPhuong(this.value)">x&sup2;</button>
 			</div>
 			<div class ="buttonright">
 				<button id="tru" value="-" onclick="Set_num(this.value)">-</button>
 				<button id="canBacHai" value="&Sqrt;" onclick="canBacHai(this.value)">&Sqrt;</button>
 			</div>
 			<div class ="buttonright">
-				<button id="nhan" value="x" onclick="Set_num(this.value)">x</button>
+				<button id="nhan" value="*" onclick="Set_num(this.value)">x</button>
 				<button id="giaiThua" value="!" onclick="giaiThua(this.value)">x!</button>
 			</div>
 			<div class ="buttonright">
@@ -120,35 +120,35 @@
 		</div>
 		<div class="Calculator left">
 			<div class ="buttonleft">
-				<button class="numberLeft" value= "1" onclick="Set_num(this.value)">1</button>
+				<button id="num1" value= "1" onclick="Set_num(this.value)">1</button>
 
-				<button class="numberLeft" value= "2" onclick="Set_num(this.value)">2</button>
+				<button id="num2" value= "2" onclick="Set_num(this.value)">2</button>
 
-				<button class="numberLeft" value= "3" onclick="Set_num(this.value)">3</button>
+				<button id="num3" value= "3" onclick="Set_num(this.value)">3</button>
 			</div>
 
 			<div class="buttonleft">
-				<button class="numberLeft" value= "4" onclick="Set_num(this.value)">4</button>
+				<button id="num4" value= "4" onclick="Set_num(this.value)">4</button>
 
-				<button class="numberLeft" value= "5" onclick='Set_num(this.value)''>5</button>
+				<button id="num5" value= "5" onclick='Set_num(this.value)''>5</button>
 
-				<button class="numberLeft" value= "6" onclick="Set_num(this.value)">6</button>
+				<button id="num6" value= "6" onclick="Set_num(this.value)">6</button>
 			</div>
 
 			<div class ="buttonleft">
-				<button class="numberLeft" value= "7" onclick="Set_num(this.value)">7</button>
+				<button id="num7" value= "7" onclick="Set_num(this.value)">7</button>
 
-				<button class="numberLeft" value= "8" onclick="Set_num(this.value)">8</button>
+				<button id="num8" value= "8" onclick="Set_num(this.value)">8</button>
 
-				<button class="numberLeft" value= "9" onclick="Set_num(this.value)">9</button>
+				<button id="num9" value= "9" onclick="Set_num(this.value)">9</button>
 			</div>	
 
 			<div class ="buttonleft">
-				<button class="numberLeft" value= "0" onclick="Set_num(this.value)">0</button>
+				<button id="num0" value= "0" onclick="Set_num(this.value)">0</button>
 
-				<button class="numberLeft" value= "." onclick="Set_num(this.value)">.</button>
+				<button id="dot" value= "." onclick="Set_num(this.value)">.</button>
 
-				<button id="equal" value="=" onclick="KetQua()"; onclick="canBacHai()">=</button>
+				<button id="equal" value="=" onclick="ketQua()">=</button>
 			</div>	
 		</div>
 
@@ -157,23 +157,39 @@
 	</div>		
 	<script>
 		var x = "";
-		var a = document.getElementById('result').value;
-		function Set_num(num){
-			x += num;
-			document.getElementById('result').value = x;
-
+		function getId (id){
+			return document.getElementById(id);
 		}
 
-		function Xoa() {
-			document.getElementById('result').value = "";
+		function Set_num(num){
+			x += num;
+			getId('result').value = x;	
+		}
+
+		function ketQua(){
+			x = eval(getId('result').value);
+			getId('result').value = x;
+		}
+
+		function Xoa(){
+			getId('result').value = '';
 			x = '';
 		}
 
-		function KetQua(){
+		function giaiThua (){
+			x = document.getElementById('result').value;
+			result = 1;
+			for (var i = x; i > 0; i--) {
+				result = result * i;
+			}
+			getId('result').value = result;
+		}
+		
+		
+		function phanTram(){
+			x = eval(getId('result').value*(1/100));
 
-			x = eval(document.getElementById('result').value);
-			document.getElementById('result').value = x;
-
+			getId('result').value = x; 
 		}
 
 		function canBacHai(){
@@ -186,20 +202,7 @@
 			document.getElementById('result').value = x;
 		}
 
-		function giaiThua (){
-			x = document.getElementById('result').value;
-			result = 1;
-			for (var i = x; i > 0; i--) {
-				result = result * i;
-			}
-			document.getElementById('result').value = result;
-		}
-		
-		function phanTram(){
-			x = eval(document.getElementById('result').value*(1/100));
 
-			document.getElementById('result').value = x;
-		}
 
 	</script>
 
