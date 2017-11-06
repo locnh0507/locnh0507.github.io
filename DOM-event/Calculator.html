@@ -7,6 +7,26 @@
 		h1{
 			text-align: center;
 		}
+		body{
+			background: whitesmoke;
+		}
+
+		body button:hover {
+			background: white;
+		}
+
+		#dot:hover {
+			background: white;
+		}
+
+		body button:active {
+			opacity: 0.8;
+			transform: scale(1.15);
+		}
+
+		#equal:hover {
+			background: white;
+		}
 
 		.maincontent {
 			max-width: 400px;
@@ -110,7 +130,7 @@
 				<button id="canBacHai" value="&Sqrt;" onclick="canBacHai(this.value)">&Sqrt;</button>
 			</div>
 			<div class ="buttonright">
-				<button id="nhan" value="*" onclick="Set_num(this.value)">x</button>
+				<button id="nhan" value="x" onclick="Set_num(this.value)">x</button>
 				<button id="giaiThua" value="!" onclick="giaiThua(this.value)">x!</button>
 			</div>
 			<div class ="buttonright">
@@ -157,6 +177,7 @@
 	</div>		
 	<script>
 		var x = "";
+		var str = "";
 		function getId (id){
 			return document.getElementById(id);
 		}
@@ -166,8 +187,9 @@
 			getId('result').value = x;	
 		}
 
-		function ketQua(){
-			x = eval(getId('result').value);
+		function ketQua(){	
+			str = getId('result').value.replace("x","*");
+			x = eval(str);
 			getId('result').value = x;
 		}
 
@@ -209,4 +231,4 @@
 
 
 </body>
-</html> 
+</html> 

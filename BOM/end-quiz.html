@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>History Test: End</title>
+<script>
+	var s = location.search;
+ 	var start = s.indexOf("=")+1;
+	var answer = s.substring(start);
+	var response = (answer == "Washington") ? "Right!" : "Wrong!";
+	history.go(1);
+</script>
+</head>
+<body>
+<p style="font-weight:bold;">
+	<script>
+		document.write("Your answer was: " + answer + ". " + response);
+	</script>
+</p>
+<p>You're done.</p>
+<form action="question2.html">
+<input type="button" onclick="location.href='start-quiz.html';" value="Start Over" >
+</form>
+</body>
+</html>
