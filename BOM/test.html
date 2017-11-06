@@ -1,229 +1,167 @@
-<style>
-  @import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+  <html>
+  <head>
+    <title>Bai Tap BOM</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: white;
+      }
 
-body{
-    font-size: 20px;
-    font-family: 'Work Sans', sans-serif;
-    color: #333;
-  font-weight: 300;
-  text-align: center;
-  background-color: #f8f6f0;
-}
-h1{
-  font-weight: 300;
-  margin: 0px;
-  padding: 10px;
-  font-size: 20px;
-  background-color: #444;
-  color: #fff;
-}
-.question{
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-.answers {
-  margin-bottom: 20px;
-  text-align: left;
-  display: inline-block;
-}
-.answers label{
-  display: block;
-  margin-bottom: 10px;
-}
-button{
-  font-family: 'Work Sans', sans-serif;
-    font-size: 22px;
-    background-color: #279;
-    color: #fff;
-    border: 0px;
-    border-radius: 3px;
-    padding: 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-button:hover{
-    background-color: #38a;
-}
+      .container{
+        height: 350px;
+        width: 1000px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        background: whitesmoke;
+        border : 2px solid grey;
+      }
 
+      .title{
+        text-align: Center;
+        font-size: 36px;
+        padding-top: 20px;
+        text-transform: uppercase;
+      }
 
+      .question{
+        padding: 20px;
+        margin: 20px;
+        font-size: 26px;
+        border: 1px solid grey;
+        border-radius: 50px;
+      }
 
+      .option:hover{
+        background: darkgrey;
+      }
 
+      .option{
+        width: 400px;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 10px 50px 10px 30px;
+        margin :10px 7px 10px 10px;
+      }
 
-.slide{
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.active-slide{
-  opacity: 1;
-  z-index: 2;
-}
-.quiz-container{
-  position: relative;
-  height: 200px;
-  margin-top: 40px;
-}
-  
-</style>
+      .option input:checked .option{
+        background: darkgrey;
+        color: darkgrey; 
+      }
+
+      .next-btn{
+        width: 120px;
+        height:50px;
+        float: right;
+        padding: 5px;
+        border-radius: 10px;
+        border:none;
+        margin-right: 20px;
+        background: #338ffb;     
+        font-size: 14px;
+      }
+
+      .next-btn:hover{
+        transform: scale(1.1);
+      }
+
+      .result{
+        height: 100px;
+        text-align: center;
+        font-size: 75px;
+      }
+
+    </style>
+</head>
 <body>
-<h1>Quiz on Important Facts</h1>
-<div class="quiz-container">
-  <div id="quiz"></div>
-</div>
-<button id="previous">Previous Question</button>
-<button id="next">Next Question</button>
-<button id="submit">Submit Quiz</button>
-<div id="results"></div>
+  <div id="quizContainer" class="container">
+      <div class="title">abc</div>
+      <div id="question" class="question">abc?</div>
+      <label class="option"><input type="radio" name="option" value="1" /> <span id="opt1"></span></label>
+      <label class="option"><input type="radio" name="option" value="2" /> <span id="opt2"></span></label>
+      <label class="option"><input type="radio" name="option" value="3" /> <span id="opt3"></span></label>
+      <label class="option"><input type="radio" name="option" value="4" /> <span id="opt4"></span></label>
+      <button id="nextButton" class="next-btn" onclick ="loadNextQuestion();">Next Question</button>
+  </div>
+  <div id="result" class="container result" style="display: none;">
+  </div>
+  <script>
+    var questions = [
+      {
+        "question":"Câu nói nào thể hiện đúng nhất tình hình Liên Xô sau chiến tranh thế giới thứ hai:"
 
-<script>
-  (function() {
-  const myQuestions = [
-    {
-      question: "Who is the strongest?",
-      answers: {
-        a: "Superman",
-        b: "The Terminator",
-        c: "Waluigi, obviously"
+        "option1":"Chịu tổn thất nặng nề nhất",
+        "option2":"Không bị ảnh hưởng",
+        "option3":"Ít bị ảnh hưởng do chiến tranh gây ra"
+        "option4":"Tổn thất nặng nề",
+        "answer":"1"
       },
-      correctAnswer: "c"
-    },
-    {
-      question: "What is the best site ever created?",
-      answers: {
-        a: "SitePoint",
-        b: "Simple Steps Code",
-        c: "Trick question; they're both the best"
+
+      {
+        "question":"Sự kiện I.Gagarin bay vòng quanh Trái đất có ý nghĩa như thế nào?"
+        "option1":"Mở ra ngành du lịch vũ trụ",
+        "option2":"Mở đầu kỉ nguyên chinh phục vũ trụ của loài người",
+        "option3":"Thúc đẩy khoa học kĩ thuật bùng nổ"
+        "option4":"Tạo thế cân bằng với Mĩ",
+        "answer":"2"
       },
-      correctAnswer: "c"
-    },
-    {
-      question: "Where is Waldo really?",
-      answers: {
-        a: "Antarctica",
-        b: "Exploring the Pacific Ocean",
-        c: "Sitting in a tree",
-        d: "Minding his own business, so stop asking"
+
+      {
+        "question":"Năm 1949 đã ghi dấu ấn vào lịch sử Liên Xô bằng sự kiện nổi bật nào?"
+        "option1":"Liên Xô phòng thành công tàu vũ trụ"
+        "option2":"Liên Xô hoàn thành thắng lợi kế hoạch 5 năm khôi phục kinh tế"
+        "option3":"Liên Xô chế tạo thành công bom nguyên tử"
+        "option4":"Xô phóng thành công vệ tinh nhân tạo"
+        "answer":"3"
       },
-      correctAnswer: "d"
-    }
-  ];
 
-  function buildQuiz() {
-    // we'll need a place to store the HTML output
-    const output = [];
+      {
+        "question":"Thành tựu nào quan trọng nhất mà Liên Xô đạt được sau chiến tranh Thế giới lần thứ II?"
+        "option1":"Đến thập kỉ 60 của thế kỉ XX Liên Xô trở thành cường quốc công nghiệp thứ 2 thế giới sau Mĩ"
+        "option2":"Năm 1957 Liên Xô là nước phóng thành công vệ tinh nhân tạo lên quỹ đạo Trái Đất"
+        "option3":"Năm 1961 Liên Xô đưa nhà du hành Vũ trụ Gagarin bay vòng quanh Trái Đất"
+        "option4":"Năm 1949 Liên Xô chế tạo thành công bom nguyên tử"
+        "answer":"1"
+      },
 
-    // for each question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-      // we'll want to store the list of answer choices
-      const answers = [];
+      {
+        "question":"Nguyên nhân cơ bản nhất quyết định sự sụp đổ của chế độ xã hội chủ nghĩa ở Liên Xô và Đông Âu (1989 - 1991) là"
+        "option1":"không bắt kịp bước phát triển của khoa học - kĩ thuật tiên tiến."
+        "option2":"những sai lầm về chính trị và tha hóa về phẩm chất đạo đức của một số người lãnh đạo Đảng và Nhà nước."
+        "option3":"sự chống phá của các thế lực thù địch."
+        "option4":"đường lối lãnh đạo mang tính chủ quan, duy ý chí, cùng với cơ chế tập trung quan liêu bao cấp."
+        "answer":"4"
+      },
 
-      // and for each available answer...
-      for (letter in currentQuestion.answers) {
-        // ...add an HTML radio button
-        answers.push(
-          `<label>
-             <input type="radio" name="question${questionNumber}" value="${letter}">
-              ${letter} :
-              ${currentQuestion.answers[letter]}
-           </label>`
-        );
-      }
-
-      // add this question and its answers to the output
-      output.push(
-        `<div class="slide">
-           <div class="question"> ${currentQuestion.question} </div>
-           <div class="answers"> ${answers.join("")} </div>
-         </div>`
-      );
-    });
-
-    // finally combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join("");
-  }
-
-  function showResults() {
-    // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll(".answers");
-
-    // keep track of user's answers
-    let numCorrect = 0;
-
-    // for each question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-      // find selected answer
-      const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-      // if answer is correct
-      if (userAnswer === currentQuestion.correctAnswer) {
-        // add to the number of correct answers
-        numCorrect++;
-
-        // color the answers green
-        answerContainers[questionNumber].style.color = "lightgreen";
-      } else {
-        // if answer is wrong or blank
-        // color the answers red
-        answerContainers[questionNumber].style.color = "red";
-      }
-    });
-
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-  }
-
-  function showSlide(n) {
-    slides[currentSlide].classList.remove("active-slide");
-    slides[n].classList.add("active-slide");
-    currentSlide = n;
+    ];
     
-    if (currentSlide === 0) {
-      previousButton.style.display = "none";
-    } else {
-      previousButton.style.display = "inline-block";
+    var currentQuestion = 0;
+    var score = 0;
+
+    var container = document.getElementById('quizContainer');
+    var questionEl = document.getElementById('question');
+    var opt1 = document.getElementById('opt1');
+    var opt2 = document.getElementById('opt2');
+    var opt3 = document.getElementById('opt3');
+    var opt4 = document.getElementById('opt4');
+    var nextButton = document.getElementById('nextButton');
+    var result = document.getElementById('result');
+
+    function loadQuestion(questionIndex){
+      var q = questions[questionIndex];
+      questionEl.textContent = (questionIndex + 1) + '. ' + q.question;
+      opt1.textContent = q.option1;
+      opt2.textContent = q.option2;
+      opt3.textContent = q.option3;
+      opt4.textContent = q.option4;
     }
-    
-    if (currentSlide === slides.length - 1) {
-      nextButton.style.display = "none";
-      submitButton.style.display = "inline-block";
-    } else {
-      nextButton.style.display = "inline-block";
-      submitButton.style.display = "none";
-    }
-  }
 
-  function showNextSlide() {
-    showSlide(currentSlide + 1);
-  }
 
-  function showPreviousSlide() {
-    showSlide(currentSlide - 1);
-  }
 
-  const quizContainer = document.getElementById("quiz");
-  const resultsContainer = document.getElementById("results");
-  const submitButton = document.getElementById("submit");
 
-  // display quiz right away
-  buildQuiz();
 
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
-  const slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
 
-  showSlide(0);
-
-  // on submit, show results
-  submitButton.addEventListener("click", showResults);
-  previousButton.addEventListener("click", showPreviousSlide);
-  nextButton.addEventListener("click", showNextSlide);
-})();
-</script>
+  </script>
 </body>
+</html> 
