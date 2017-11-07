@@ -1,25 +1,149 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>History Test: End</title>
-<script>
-	var s = location.search;
- 	var start = s.indexOf("=")+1;
-	var answer = s.substring(start);
-	var response = (answer == "Washington") ? "Right!" : "Wrong!";
-	history.go(1);
-</script>
+	<meta charset="UTF-8">
+	<title>End-Quiz</title>
+
+	<style>
+
+	body {
+		background: #3da1d1;
+		color: #fff;
+		overflow: hidden;
+		height: 500px;
+	}
+
+	.congrats {
+		position: absolute;
+		top: 140px;
+		width: 800px;
+		height: 500px;
+		padding: 20px 10px;
+		text-align: center;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+	}
+
+	.congrats1 {
+		position: absolute;
+		top: 300px;
+		width: 800px;
+		height: 500px;
+		padding: 20px 10px;
+		text-align: center;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+	}
+
+	h1 {
+		transform-origin: 50% 50%;
+		font-size: 50px;
+		cursor: pointer;
+		z-index: 2;
+		position: absolute;
+		top: 0;
+		text-align: center;
+		width: 100%;
+	}
+
+
+	@keyframes snow {
+		0% {
+			opacity: 0.8; width: 10%;
+		}
+		100% {
+			opacity: 1;width: 30%;
+		}
+	}
+
+	.stars {
+		font-family: Androgyne;
+		z-index: 1;
+		position: absolute;
+		top: 10px;
+		width: 550px;
+		height: 100px;
+		padding: 20px 10px;
+		text-align: center;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		animation: snow 3s linear infinite;
+	}
+
+	.stars img {
+		width: 20%;
+		float: left; 
+	}
+	
+</style>
 </head>
 <body>
-<p style="font-weight:bold;">
+	<div class="congrats">
+		<h1>Chúc Mừng</h1>
+		
+	</div>
+	<div class="congrats1">
+		<h1>Bạn Đã Trả Lời Đúng : 5/5</h1>
+		
+	</div>
+	<div class="stars">
+		<img src="star.png"/>
+		<img src="star.png"/>
+		<img src="star.png"/>
+		<img src="star.png"/>
+		<img src="star.png"/>
+	</div>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
 	<script>
-		document.write("Your answer was: " + answer + ". " + response);
+		// Click "Congratulations!" to play animation
+
+		$(function() {
+			animateText();
+			animateImg();
+		});
+
+		$('.congrats').click(function() {
+			reset();
+			animateText();
+		});
+
+		$('.stars').click(function() {
+			reset();
+			animateImg();
+		});
+
+		function reset() {
+			$.each($('.stars'), function(i) {
+			TweenMax.set($(this), { x: 0, y: 0, opacity: 1 });
+		});
+	
+		TweenMax.set($('h1'), { scale: 1, opacity: 1, rotation: 0 });
+		}
+
+		function animateText() {
+			TweenMax.from($('h1'), 0.8, {
+				scale: 0.4,
+				opacity: 0,
+				rotation: 15,
+				ease: Back.easeOut.config(4),
+			});
+		}
+		function animateImg() {
+			TweenMax.from($('img'), 0.8, {
+				scale: 0.4,
+				opacity: 0,
+				rotation: 180,
+				ease: Back.easeOut.config(4),
+			});
+		}
+
+
+
 	</script>
-</p>
-<p>You're done.</p>
-<form action="question2.html">
-<input type="button" onclick="location.href='start-quiz.html';" value="Start Over" >
-</form>
 </body>
 </html>
