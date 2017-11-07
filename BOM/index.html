@@ -184,7 +184,7 @@
   <div id="quizContainer" class="container" >
       <div class="title">Math Quiz</div>
       <div id="question" class="question" ></div>
-      <label class="option"><input type="radio" name="option" value="1" /> <span id="opt1"></span></label>
+      <label class="option"><input type="radio" name="option" value="1" /> <span id="opt1">></span></label>
       <label class="option"><input type="radio" name="option" value="2" /> <span id="opt2"></span></label>
       <label class="option"><input type="radio" name="option" value="3" /> <span id="opt3"></span></label>
       <label class="option"><input type="radio" name="option" value="4" /> <span id="opt4"></span></label>
@@ -269,6 +269,7 @@
 
     var container = document.getElementById('quizContainer');
     var questionEl = document.getElementById('question');
+
     var opt1 = document.getElementById('opt1');
     var opt2 = document.getElementById('opt2');
     var opt3 = document.getElementById('opt3');
@@ -281,12 +282,12 @@
 
     function loadQuestion(questionIndex){
       q = questions[questionIndex];
-      question.textContent = q.question;
-      p.textContent = "Question " + (questionIndex + 1 ) + " of 5 ";
-      opt1.textContent = q.option1;
-      opt2.textContent = q.option2;
-      opt3.textContent = q.option3;
-      opt4.textContent = q.option4;
+      question.innerHTML = q.question;
+      p.innerHTML = "Question " + (questionIndex + 1 ) + " of 5 ";
+      opt1.innerHTML = q.option1;
+      opt2.innerHTML = q.option2;
+      opt3.innerHTML = q.option3;
+      opt4.innerHTML = q.option4;
     }
 
     function loadNextQuestion(){
