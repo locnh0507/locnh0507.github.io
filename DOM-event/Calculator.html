@@ -134,7 +134,7 @@
 				<button id="giaiThua" value="!" onclick="giaiThua(this.value)">x!</button>
 			</div>
 			<div class ="buttonright">
-				<button id="chia" value="/" onclick="Set_num(this.value)">/</button>
+				<button id="chia" value=":" onclick="Set_num(this.value)">:</button>
 				<button id="phanTram" value="%" onclick="phanTram(this.value)">%</button>
 			</div>
 		</div>
@@ -150,7 +150,7 @@
 			<div class="buttonleft">
 				<button id="num4" value= "4" onclick="Set_num(this.value)">4</button>
 
-				<button id="num5" value= "5" onclick='Set_num(this.value)''>5</button>
+				<button id="num5" value= "5" onclick='Set_num(this.value)'>5</button>
 
 				<button id="num6" value= "6" onclick="Set_num(this.value)">6</button>
 			</div>
@@ -188,7 +188,7 @@
 		}
 
 		function ketQua(){	
-			str = getId('result').value.replace("x","*");
+			str = getId('result').value.replace("x","*").replace(":","/");
 			x = eval(str);
 			getId('result').value = x;
 		}
