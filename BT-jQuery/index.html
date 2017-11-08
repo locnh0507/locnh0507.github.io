@@ -338,7 +338,8 @@
           }
           else{
             $('#quizContainer').hide();
-            $('#Congratulations').show();  
+            $('#Congratulations').show();
+            
           }
         }
         loadQuestion(currentQuestion);
@@ -359,9 +360,9 @@
           $('button').css('background-color','white');
           $('.back-btn').css('background-color','#3da1d1');
           $('#changedButton').css('background-color',"#3da1d1");
-          $('h1').css("color","#3da1d1");
           $('#changeButton').hide();
           $('#changedButton').show();
+          $("h1").css("color","#3da1d1");
       }
 
       function changedTheme(){
@@ -371,6 +372,7 @@
           $('button').css('background-color','whitesmoke');
           $('#changedButton').hide();
           $('#changeButton').show();
+          $("h1").css("color","white");
       }
 
     </script>
