@@ -15,14 +15,18 @@
             max-width: 1400px;
             margin: auto;
             width: 100%;
-            padding: 0;
+            padding-top: 80px;
+        }
+
+        .wrap progress {
+            width: 100%;
+
         }
 
         .content {
             width: 100%;
             margin: auto;
-            padding-top: 150px;
-
+            padding-top: 60px;
 
         }
 
@@ -30,7 +34,7 @@
             float: left;
             position: relative;
             margin: auto;
-            padding: 20px;
+            padding: 25px;
             width: 12.5%;
         }
 
@@ -62,10 +66,114 @@
 
         .card .front,
         .card .back {
-            transition: all 0.7s;
+            transition: all 0.6s;
             backface-visibility: hidden;
         }
 
+        .modal {
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 2;
+        }
+
+        .modalWin {
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 2;
+        }
+
+        .modalLose {
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 2;
+        }
+
+
+
+        .dialog {
+            background: white;
+            width: 600px;
+            height: 300px;
+            position: relative;
+        }
+
+        .dialog img {
+            position: absolute;
+            left: 38%;
+            top: 20%;
+        }
+
+        .dialogLose {
+            background: white;
+            width: 600px;
+            height: 300px;
+            position: relative;
+
+        }
+
+        .dialogWin {
+            background: white;
+            width: 600px;
+            height: 300px;
+            position: relative;
+
+        }
+
+        #startAgain {
+            position: absolute;
+            bottom: 10%;
+            left: 210;
+            width: 180px;
+            height: 50px;
+            background: cornflowerblue;
+            border: 1px solid cornflowerblue;
+            font-size: 20px;
+            color: whitesmoke;
+        }
+
+        .img1 {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .img2 {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+
+        .dialog button {
+            position: absolute;
+            bottom: 10%;
+            left: 200;
+            width: 200px;
+            height: 50px;
+            background: cornflowerblue;
+            border: 1px solid cornflowerblue;
+            font-size: 20px;
+            color: whitesmoke;
+        }
+
+        button:hover {
+            opacity: 0.95;
+        }
 
         #snow {
             background: none;
@@ -134,20 +242,53 @@
 
 <body>
     <div id="snow">
-        <div class="wrap">
+        <div class="wrap" style="display:none;">
+            <div class="timer">
+                <progress value="100" max="100"></progress>
+            </div>
             <div class="content">
+            </div>
+        </div>
+        <div class="modal">
+            <div class="dialog">
+                <h1>MEMORY CARD</h1>
+                <img src="./img/pokeball.jpg" />
+                <button id="startButton">Start Game</button>
+            </div>
+        </div>
+        <div class="modalLose" style="display:none;">
+            <div class="dialogLose">
+                <h1>YOU LOSE</h1>
+                <img class="img1" src="./img/lose.jpg" />
+                <img class="img2" src="./img/lose1.jpg" />
+                <button id="startAgain">Start Again</button>
+            </div>
+        </div>
+        <div class="modalWin" style="display:none;">
+            <div class="dialogWin">
+                <h1>YOU WIN</h1>
+                <img class="img1" src="./img/win1.jpg" />
+                <img class="img2" src="./img/win.jpg" />
+                <button id="startAgain" onclick="startAgain()">Start Again</button>
             </div>
         </div>
     </div>
     <div>
-        <audio id="themeSong" autoplay>
-                    <source src="./img/themeSong.mp3" type="audio/mpeg">
-                </audio>
+
+        <audio id="themeSong">
+            <source src="./img/themeSong.mp3" type="audio/mpeg">
+        </audio>
         <audio id="correctAnswer">
             <source src="./img/correctAnswer.mp3" type="audio/mpeg">
         </audio>
         <audio id="wrongAnswer">
             <source src="./img/wrongAnswer.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="loseSound">
+            <source src="./img/Lose.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="winSound">
+            <source src="./img/Win.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -156,8 +297,12 @@
     <script>  
         var current = null
             , cards = ["front1", "front2", "front3", "front4", "front5", "front6"]
-            , playing = !1
-            , numberCards = 12;
+            , count = 0
+            , remainingTime = 70
+            , maxTime = remainingTime
+            , isPlaying = !1
+            , run = null;
+
 
         function shuffle(cards) {
             var currentIndex = cards.length, temporaryValue, randomIndex;
@@ -182,11 +327,12 @@
 
         function playSound(id) {
             document.getElementById(id).load(),
-            document.getElementById(id).play()
+                document.getElementById(id).play()
         }
 
 
         function flip(card) {
+            
             $(card).toggleClass("flipped");
             if (!current) {
                 current = $(card);
@@ -197,8 +343,8 @@
                         $(card).toggleClass('flipped');
                         current.toggleClass('flipped');
                         playSound('wrongAnswer');
-                        current = null;
                         $(".card").css("pointer-events", "auto");
+                        current = null;
                     }, 800);
                 }
                 else {
@@ -207,12 +353,54 @@
                         current.css('opacity', '0');
                         playSound('correctAnswer');
                         current = null;
-                    }, 800);
+                        count++;
+                        if (count == 12) {
+                            document.getElementById('themeSong').pause();
+                            $('.modalWin').show();
+                            playSound('winSound');
+                            stopGame();
+                            $('.wrap').css('opacity', 0.5);
+                        }
 
+                    }, 800);
                 }
             }
-
         }
+
+        $('#startAgain').click(function () {
+            window.location.href = window.location.href;
+        })
+
+        function startAgain() {
+            window.location.href = window.location.href;
+        };
+
+        function stopGame() {
+            isPlaying = !1,
+                null != run && (clearInterval(run),
+                    run = null),
+                $(".card").css("pointer-events", "none")
+        }
+
+        $('#startButton').click(function () {
+            $('.dialog').hide();
+            $('.wrap').show();
+            playSound('themeSong');
+            run = setInterval(function () {
+                remainingTime--;
+                $("progress").val(remainingTime / maxTime * 100),
+                    console.log(remainingTime);
+                if (remainingTime == 0) {  
+                    document.getElementById('themeSong').pause();
+                    $('.wrap').css('opacity', 0.5);
+                    $('.modalLose').show();
+                    playSound('loseSound');
+                    stopGame();
+                }
+            }, 1000);
+        })
+
+
 
         $(function () {
             cards = cards.concat(cards, cards, cards);
