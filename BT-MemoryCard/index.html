@@ -22,7 +22,7 @@
             width: 100%;
             margin: auto;
             padding-top: 150px;
-            
+
 
         }
 
@@ -36,7 +36,7 @@
 
         .card img {
             margin: auto;
-            
+
         }
 
         .card .front {
@@ -49,7 +49,6 @@
 
         .card.flipped .back {
             transform: rotateY(180deg)
-            
         }
 
         .card.flipped .front {
@@ -61,10 +60,11 @@
             box-shadow: 0 0 15px 5px rgba(200, 240, 240, .75)
         }
 
-        .card .front , .card .back {
+        .card .front,
+        .card .back {
             transition: all 0.7s;
             backface-visibility: hidden;
-        } 
+        }
 
 
         #snow {
@@ -139,7 +139,19 @@
             </div>
         </div>
     </div>
+    <div>
+        <audio id="themeSong" autoplay>
+                    <source src="./img/themeSong.mp3" type="audio/mpeg">
+                </audio>
+        <audio id="correctAnswer">
+            <source src="./img/correctAnswer.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="wrongAnswer">
+            <source src="./img/wrongAnswer.mp3" type="audio/mpeg">
+        </audio>
     </div>
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>  
         var current = null
@@ -148,14 +160,14 @@
             , numberCards = 12;
 
         function shuffle(cards) {
-            var currentIndex = cards.length , temporaryValue, randomIndex;
-            while (0 !== currentIndex ){
+            var currentIndex = cards.length, temporaryValue, randomIndex;
+            while (0 !== currentIndex) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex -= 1;
                 temporaryValue = cards[currentIndex];
                 cards[currentIndex] = cards[randomIndex];
                 cards[randomIndex] = temporaryValue;
-            }          
+            }
             return cards;
         }
 
@@ -168,31 +180,38 @@
             $(".content").html(html)
         }
 
+        function playSound(id) {
+            document.getElementById(id).load(),
+            document.getElementById(id).play()
+        }
+
 
         function flip(card) {
             $(card).toggleClass("flipped");
             if (!current) {
                 current = $(card);
-                $(card).css('pointer-events','none');
+                $(card).css('pointer-events', 'none');
             } else {
                 if (current.attr('data-name') != $(card).attr('data-name')) {
                     setTimeout(function () {
                         $(card).toggleClass('flipped');
                         current.toggleClass('flipped');
+                        playSound('wrongAnswer');
                         current = null;
-                        $(".card").css("pointer-events", "auto");                     
+                        $(".card").css("pointer-events", "auto");
                     }, 800);
                 }
                 else {
                     setTimeout(function () {
                         $(card).css('opacity', '0');
                         current.css('opacity', '0');
+                        playSound('correctAnswer');
                         current = null;
                     }, 800);
 
                 }
             }
-         
+
         }
 
         $(function () {
