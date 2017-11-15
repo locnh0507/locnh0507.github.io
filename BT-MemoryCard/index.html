@@ -3,17 +3,17 @@
 <head>
     <title>BT-MemoryCard</title>
     <style>
-        
         * {
             box-sizing: border-box;
         }
 
-        body, a:hover {
+        body,
+        a:hover {
             cursor: url(http://cur.cursors-4u.net/games/gam-13/gam1282.cur), progress !important;
-            }
+        }
 
         body {
-            background: url("https://images2.alphacoders.com/754/thumb-1920-75412.jpg") center center no-repeat;
+            background: url("./img/wallpaper.jpg");
         }
 
         .wrap {
@@ -49,6 +49,10 @@
         }
 
         .card .front {
+            -moz-transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
             transform: rotateY(180deg);
             position: absolute;
             left: 0;
@@ -57,10 +61,18 @@
         }
 
         .card.flipped .back {
+            -moz-transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
             transform: rotateY(180deg)
         }
 
         .card.flipped .front {
+            -moz-transform: rotateY(0);
+            -webkit-transform: rotateY(0);
+            -ms-transform: rotateY(0);
+            -o-transform: rotateY(0);
             transform: rotateY(0);
         }
 
@@ -72,6 +84,7 @@
         .card .front,
         .card .back {
             transition: all 0.5s;
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
 
@@ -79,6 +92,10 @@
             position: fixed;
             left: 50%;
             top: 40%;
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
             z-index: 2;
         }
@@ -87,6 +104,10 @@
             position: fixed;
             left: 50%;
             top: 40%;
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
             z-index: 2;
         }
@@ -95,6 +116,10 @@
             position: fixed;
             left: 50%;
             top: 40%;
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
             z-index: 2;
         }
