@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bai Tap Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: inherit;
+
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            max-width: 1500;
+            margin: auto;
+            background: gainsboro;
+
+
+        }
+
+        .loginForm {
+            padding-top: 50px;
+            width: 100%;
+            height: 160px;
+            border: 1px solid grey;
+
+        }
+
+        .left {
+            float: left;
+            width: 40%;
+            height: 80px;
+            padding-left: 80px;
+        }
+
+        .right {
+            float: right;
+            width: 40%;
+            height: 80px;
+            position: relative;
+        }
+
+        .title {
+            float: left;
+            width: 33.330%;
+            padding-right: 30px;
+            position: relative;
+            height: 41px;
+        }
+
+        .title input {
+            width: 100%;
+            height: 24px;
+            padding: 0;
+
+        }
+
+        input {
+            font-size: 16px;
+        }
+
+        #loginButton {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 24px;
+            background: whitesmoke;
+        }
+
+        #loginButton:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='wrap'>
+        <div class="loginForm">
+            <div class="left">
+                <img src="http://www.moy.media/wp-content/uploads/2017/07/Website-Logo-5.png" />
+            </div>
+            <div class="right">
+                <div class="title">
+                    <label>User</label>
+                    <input/>
+                </div>
+                <div class="title">
+                    <label>Password</label>
+                    <input type="password" />
+                </div>
+                <div class="title Login">
+                    <input type="submit" value="Login" id="loginButton"></input>
+                </div>
+                <div>
+                    <input type="checkbox" id="remember" />
+                    <label>Remember me?</label>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
