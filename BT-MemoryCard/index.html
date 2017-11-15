@@ -3,9 +3,14 @@
 <head>
     <title>BT-MemoryCard</title>
     <style>
+        
         * {
             box-sizing: border-box;
         }
+
+        body, a:hover {
+            cursor: url(http://cur.cursors-4u.net/games/gam-13/gam1282.cur), progress !important;
+            }
 
         body {
             background: url("https://images2.alphacoders.com/754/thumb-1920-75412.jpg") center center no-repeat;
@@ -66,7 +71,7 @@
 
         .card .front,
         .card .back {
-            transition: all 0.6s;
+            transition: all 0.5s;
             backface-visibility: hidden;
         }
 
@@ -173,6 +178,7 @@
 
         button:hover {
             opacity: 0.95;
+            cursor: url(http://cur.cursors-4u.net/games/gam-13/gam1282.cur), progress !important;
         }
 
         #snow {
@@ -298,7 +304,7 @@
         var current = null
             , cards = ["front1", "front2", "front3", "front4", "front5", "front6"]
             , count = 0
-            , remainingTime = 70
+            , remainingTime = 60
             , maxTime = remainingTime
             , isPlaying = !1
             , run = null;
@@ -332,12 +338,12 @@
 
 
         function flip(card) {
-            
             $(card).toggleClass("flipped");
             if (!current) {
                 current = $(card);
                 $(card).css('pointer-events', 'none');
             } else {
+                $('.card').css('pointer-events', 'none');
                 if (current.attr('data-name') != $(card).attr('data-name')) {
                     setTimeout(function () {
                         $(card).toggleClass('flipped');
@@ -345,13 +351,14 @@
                         playSound('wrongAnswer');
                         $(".card").css("pointer-events", "auto");
                         current = null;
-                    }, 800);
+                    }, 600);
                 }
                 else {
                     setTimeout(function () {
                         $(card).css('opacity', '0');
                         current.css('opacity', '0');
                         playSound('correctAnswer');
+                        $(".card").css("pointer-events", "auto");
                         current = null;
                         count++;
                         if (count == 12) {
@@ -361,8 +368,7 @@
                             stopGame();
                             $('.wrap').css('opacity', 0.5);
                         }
-
-                    }, 800);
+                    }, 600);
                 }
             }
         }
@@ -376,10 +382,10 @@
         };
 
         function stopGame() {
-            isPlaying = !1,
-                null != run && (clearInterval(run),
-                    run = null),
-                $(".card").css("pointer-events", "none")
+            if (null != clearInterval(run)) {
+                run = null;
+            }
+            $(".card").css("pointer-events", "none");
         }
 
         $('#startButton').click(function () {
@@ -390,7 +396,7 @@
                 remainingTime--;
                 $("progress").val(remainingTime / maxTime * 100),
                     console.log(remainingTime);
-                if (remainingTime == 0) {  
+                if (remainingTime == 0) {
                     document.getElementById('themeSong').pause();
                     $('.wrap').css('opacity', 0.5);
                     $('.modalLose').show();
