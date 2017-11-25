@@ -186,17 +186,7 @@
             text-align: center;
         }
 
-        @media (max-width:768px) {
-            #backtop {
-                display: none;
-            }
-        }
 
-        @media (min-width:1440px) {
-            #callButton {
-                display: none;
-            }
-        }
 
 
         img.img-responsive {
@@ -217,7 +207,7 @@
             border-top-width: 5px;
         }
 
-        
+
 
 
         .info {
@@ -265,6 +255,32 @@
         .sendButton {
             padding-bottom: 7px;
             padding-top: 156px;
+        }
+
+
+
+        @media (max-width:768px) {
+            #backtop {
+                display: none;
+            }
+        }
+
+        @media (min-width:1440px) {
+            #callButton {
+                display: none;
+            }
+        }
+
+        @media(min-width:1366px) {
+            .left-box {
+                float: left;
+                margin-left: 10%;
+            }
+
+            .right-box {
+                float: right;
+                margin-right: 10%;
+            }
         }
     </style>
 </head>
@@ -336,7 +352,8 @@
                     </div>
                     <section>
                         <div class="row">
-                            <div class="col-xs-12 col-ms-12 col-md-offset-1 col-lg-4 box">
+                            <div class="col-xs-12 col-ms-12 col-md-12 col-lg-4 box left-box">
+
                                 <div class="info">
                                     <h2>Thông tin cơ bản</h2>
                                     <div>
@@ -373,40 +390,41 @@
                                         <span>Chủ nhật: 7h:00 - 12:00</span>
                                     </div>
                                 </div>
+
                             </div>
 
-                            <div class="rightbox">
-                                <div class="col-xs-12 col-ms-12 col-md-offset-2 col-lg-4 box">
-                                    <h3>Ý Kiến Phản Hồi</h3>
-                                    <div class="spantext">
-                                        <span>Họ Tên :</span>
-                                        <input type="text" class="textinput" />
-                                        <br/>
-                                    </div>
-                                    <div class="spantext">
-                                        <span>Địa chỉ :</span>
-                                        <input type="text" class="textinput" />
-                                        <br/>
-                                    </div>
-                                    <div class="spantext">
-                                        <span>Phone :</span>
-                                        <input type="text" class="textinput" />
-                                        <br/>
-                                    </div>
-                                    <div class="spantext">
-                                        <span>Email :</span>
-                                        <input type="text" class="textinput" />
-                                        <br/>
-                                    </div>
-                                    <div>
-                                        <span class="spantext">Ý Kiến Phản Hồi :</span>
-                                        <textarea></textarea>
-                                    </div>
-                                    <div class="sendButton">
-                                        <button id="button" type="button" class="btn btn-primary">Send</button>
-                                    </div>
 
+                            <div class="col-xs-12 col-ms-12 col-md-12 col-lg-4 box right-box">
+
+                                <h3>Ý Kiến Phản Hồi</h3>
+                                <div class="spantext">
+                                    <span>Họ Tên :</span>
+                                    <input type="text" class="textinput" />
+                                    <br/>
                                 </div>
+                                <div class="spantext">
+                                    <span>Địa chỉ :</span>
+                                    <input type="text" class="textinput" />
+                                    <br/>
+                                </div>
+                                <div class="spantext">
+                                    <span>Phone :</span>
+                                    <input type="text" class="textinput" />
+                                    <br/>
+                                </div>
+                                <div class="spantext">
+                                    <span>Email :</span>
+                                    <input type="text" class="textinput" />
+                                    <br/>
+                                </div>
+                                <div>
+                                    <span class="spantext">Ý Kiến Phản Hồi :</span>
+                                    <textarea></textarea>
+                                </div>
+                                <div class="sendButton">
+                                    <button id="button" type="button" class="btn btn-primary">Send</button>
+                                </div>
+
                             </div>
                         </div>
                     </section>
@@ -414,7 +432,7 @@
 
 
 
-                    <p style="text-align:center;">&#174; copyright 2017 ABC coffee Ltd. </p> 
+                    <p style="text-align:center;">&#174; copyright 2017 ABC coffee Ltd. </p>
                 </div>
             </div>
             <div id="backtop">
