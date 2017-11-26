@@ -1,0 +1,214 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            font-family: 'Quicksand', sans-serif;
+            cursor: default;
+        }
+
+        body {
+            background: #09aaf1;
+            
+
+        }
+
+        header {
+            padding-top: 40px;
+        }
+
+        .icon {
+            float: right;
+        }
+
+        .apply {
+            padding-bottom: 65px;
+        }
+
+        .salary {
+            padding-bottom: 65px;
+        }
+
+        h1 {
+            color: white;
+
+        }
+
+        h2 {
+            color: white;
+
+        }
+
+        h3 {
+            text-align: center;
+            color: #0951bd;
+            font-weight: bold;
+        }
+
+        .student {
+            width: 35%;
+            float: left;
+        }
+
+        .student input {
+            height: 200px;
+            width: 200px;
+            color: #0951bd;
+            text-align: center;
+            font-size: 100px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .pay {
+            width: 35%;
+            float: left;
+
+        }
+
+        .pay input {
+            height: 200px;
+            width: 200px;
+            color: #0951bd;
+            text-align: center;
+            font-size: 100px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .arrow {
+            width: 30%;
+            float: left;
+            padding-top: 15%;
+        }
+
+        .arrow img {
+            width: 65%;
+            margin: auto;
+        }
+
+        ::placeholder {
+            color: #0951bd;
+        }
+
+        .row {
+            padding-top: 50px;
+            float: left;
+        }
+
+        .right-info {
+            margin: auto;
+            float: right;
+            padding-top: 8%;
+
+        }
+
+        .contact h1 {
+            font-size: 50px;
+            font-weight: bold;
+            color: #0951bd;
+            float: right
+        }
+
+    
+        .info h1{
+            font-size: 30px;
+            font-weight: bold;
+            color: #0951bd;
+            padding-top: 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <div class="col-md-3">
+            <img src="logo.png" class="img-responsive" />
+        </div>
+        <div class="col-md-2 icon">
+            <img src="icon.png" class="img-responsive" />
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="col-md-6 left-info">
+            <div class="apply">
+                <h1>Tuyển Dụng</h1>
+                <h1 style="font-weight:bold;">Phụ Trách Tuyển Sinh</h1>
+            </div>
+
+            <div class="salary">
+                <h1 style="font-weight:bold; float:left;">Lương</h1>
+                <h2 class="col-md-9">*(nhập số học viên ở dưới)</h2>
+            </div>
+            <div class="row">
+                <div class="student">
+                    <div>
+                        <input type="text" placeholder="0" id="HocVien" value="" onchange="getSalary(this.value)" />
+                        <h3>Học Viên</h1>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <div class="">
+                        <img src="arrow.png" class="img-responsive" />
+                    </div>
+                </div>
+                <div class="pay">
+                    <div>
+                        <input type="number" id="TienLuong" placeholder="0" disabled/>
+                        <h3>Triệu VNĐ</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-5 right-info">
+            <img src="anh1.jpg" class="img-responsive" />
+
+        </div>
+    </section>
+
+    <footer class="container">
+        <div class="col-md-6 info" >
+            <h1>
+                CV gửi về : cuong@techmaster.vn
+            </h1>
+        </div>
+        <div class="col-md-6 contact">
+            <h1>0902209011</h1>
+        </div>
+    </footer>
+
+    <script>
+        function getSalary(val) {
+            var num = parseInt(val);
+            if (isNaN(num)) {
+                alert('Bạn Phải Nhập Số');
+            }
+            else if (num <= 1) {
+                alert('Số Bạn Nhập Quá Nhỏ');
+            }
+            else if (num >= 400) {
+                alert('Số Bạn Nhập Quá Lớn');
+            }
+            else {
+                var x = (2 * num) / (Math.log2(num));
+                $('#TienLuong').val(x.toFixed(1))
+            }
+        }
+
+    </script>
+
+</body>
+
+
+</html>
