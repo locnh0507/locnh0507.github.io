@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro">
+  <link rel="stylesheet" href="./animation.css">
   <style>
     * {
       box-sizing: border-box;
@@ -151,6 +152,7 @@
 
     .NoiDung.text {
       color: brown;
+      margin-top: 50px;
     }
 
     h1 {
@@ -172,7 +174,6 @@
     .row {
       padding: 0;
       margin: 0;
-
     }
 
 
@@ -196,23 +197,30 @@
       }
     }
 
+    #callButton {
+      -webkit-animation: ringphone 2s infinite;
+      -webkit-animation-iteration-count: infinite;
+      
+    }
+
     @media (min-width:1440px) {
       #callButton {
         display: none;
       }
     }
 
-    @media (min-width:500px) and (max-width:1000px){
-      .product{
+
+    @media (min-width:500px) and (max-width:1000px) {
+      .product {
         width: 50%;
       }
     }
 
-    .navbar-header{
+    .navbar-header {
       position: relative;
     }
-    
-    .market{
+
+    .market {
       position: absolute;
       right: 80px;
       top: -2px;
@@ -231,6 +239,48 @@
       z-index: 9999;
     }
 
+    .slide {
+      position: relative;
+      width: 100%;
+
+    }
+
+    .slide img {
+      position: absolute;
+      top: 0;
+    }
+
+    @media (max-width:500px) {
+      .slide {
+        position: relative;
+        width: 100%;
+        height: 30%;
+      }
+    }
+
+    @media (min-width:501px) and (max-width:767px) {
+      .slide {
+        position: relative;
+        width: 100%;
+        height: 80%;
+      }
+    }
+
+    @media (min-width:768px) and (max-width:1000px) {
+      .slide {
+        position: relative;
+        width: 100%;
+        height: 40%;
+      }
+    }
+
+    @media (min-width:1000px) and (max-width:1200px) {
+      .slide {
+        position: relative;
+        width: 100%;
+        height: 55%;
+      }
+    }
   </style>
 </head>
 
@@ -260,16 +310,16 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div>
                 <div class="market">
-                    <ul class="nav navbar-nav navbar-right" data-price="0">
-                        <li>
-                          <a href="#">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
-                            <strong>$0</strong>
-                          </a>
-                        </li>
-                      </ul>
+                  <ul class="nav navbar-nav navbar-right" data-price="0">
+                    <li>
+                      <a href="#">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <strong>$0</strong>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-                
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                     <li>
@@ -287,16 +337,6 @@
 
                   </ul>
                 </div>
-
-
-                <!-- <ul class="nav navbar-nav navbar-right" data-price="0">
-                  <li>
-                    <a href="#">
-                      <span class="glyphicon glyphicon-shopping-cart"></span>
-                      <strong>$0</strong>
-                    </a>
-                  </li>
-                </ul> -->
               </div>
 
               <!-- /.navbar-collapse -->
@@ -314,7 +354,7 @@
 
           <div id="aboutUs">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-lg-4">
                 <div class="NoiDung text" style="color:brow;">
                   <span>
                     <p>Từ những người đam mê cà phê:</p>
@@ -328,10 +368,14 @@
                   </span>
                 </div>
               </div>
-              <div class="col-md-8">
+              <div class="col-lg-8">
                 <div class="NoiDung anh ">
                   <div class="NoiDung anh1">
-                    <img src="../img/cafe1.jpg" class="img-responsive" />
+                    <div class="slide">
+                      <img src="../img/cafe1.jpg" class="img-responsive" />
+                      <img src="../img/cafe2.jpg" class="img-responsive" />
+                      <img src="../img/cafe3.jpg" class="img-responsive" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -521,8 +565,8 @@
       </a>
     </div>
     <div id="Call">
-      <a href="">
-        <img src="../img/call.png" title="Call Now" alt="Call Now" class="img-responsive" id="callButton" />
+      <a href="tel:00000000">
+        <img src="../img/call.png" title="Call Now" alt="Call Now" class="img-responsive" id="callButton" title="Call Now" />
       </a>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -550,8 +594,20 @@
             });
           });
         }
-
       });
+      var img = $('.slide').children('img')
+      var count = 0;
+      img.eq(count).show();
+
+      setInterval(function () {
+        img.eq(count).fadeOut(1000);
+        count++;
+        img.eq(count).fadeIn(1000);
+        if (count == img.length) {
+          count = 0;
+          img.eq(count).fadeIn(1000)
+        }
+      }, 2500);
 
     </script>
 
