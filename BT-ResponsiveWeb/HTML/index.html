@@ -372,9 +372,9 @@
                 <div class="NoiDung anh ">
                   <div class="NoiDung anh1">
                     <div class="slide">
-                      <img src="../img/cafe1.jpg" class="img-responsive" />
-                      <img src="../img/cafe2.jpg" class="img-responsive" />
-                      <img src="../img/cafe3.jpg" class="img-responsive" />
+                      <img src="../img/cafe1.jpg" class="img-responsive" style="display: none"/>
+                      <img src="../img/cafe2.jpg" class="img-responsive" style="display: none"/>
+                      <img src="../img/cafe3.jpg" class="img-responsive" style="display: none"/>
                     </div>
                   </div>
                 </div>
@@ -596,17 +596,20 @@
         }
       });
       var img = $('.slide').children('img')
+      var isNum=0;
       var count = 0;
       img.eq(count).show();
 
       setInterval(function () {
+        isNum+=1;
         img.eq(count).fadeOut(1000);
-        count++;
+        count=isNum%3;
+        console.log(count);
         img.eq(count).fadeIn(1000);
-        if (count == img.length) {
-          count = 0;
-          img.eq(count).fadeIn(1000)
-        }
+        // if (count == img.length) {
+        //   count = 0;
+        //   img.eq(count).fadeIn(1000)
+        // }
       }, 2500);
 
     </script>
