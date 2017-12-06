@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    max-width: 1000px;
+    margin: auto;
+}
+
+#list{
+    float: left;
+    width: 50%;
+}
+#image{
+    float: right;
+    width: 50%;
+}

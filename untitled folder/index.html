@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Đổi màu nhé</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        .wrap {
+            margin: auto;
+            max-width: 1000px;
+
+        }
+
+        list {
+            float: left;
+            width: 50%;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .right {
+            float: right;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div id="list">
+            <ul>
+                <li id="Anh1" val="0" onclick=clickImg(this.val)>Anh1
+                </li>
+                <li id="Anh2" data-name="1"  onclick=clickImg(this.data-name)>Anh2
+                </li>
+                <li id="Anh3" data-name="2" onclick=clickImg(this.data-name)>Anh3
+                </li>
+                <li id="Anh4" data-name="3" onclick=clickImg(this.data-name)>Anh4
+                </li>
+                <li id="Anh5" data-name="4" onclick=clickImg(this.data-name)>Anh5
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <h1 id="name-list"></h1>
+            <img id="anh1" />
+            <p id="counter"></p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+
+        var list = [{
+            name: 'Anh1',
+            counter: 0,
+            src: 'img/Anh1.png'
+        },
+        {
+            name: 'Anh2',
+            counter: 0,
+            src: 'img/Anh2.png'
+        },
+        {
+            name: 'Anh3',
+            counter: 0,
+            src: 'img/Anh3.png'
+        }, {
+            name: 'Anh4',
+            counter: 0,
+            src: 'img/Anh4.png'
+        }, {
+            name: 'Anh5',
+            counter: 0,
+            src: 'img/Anh5.png'
+        },
+        ]
+
+        function clickImg(data){
+           console.log(data);
+        }
+
+        // $('#Anh1').click(function () {
+        //     $('#name-list').html(list[0].name)
+        //     $('#anh1').attr('src', list[0].src)
+        //     $('#counter').text(list[0].counter);
+        // })
+
+        // $('#Anh2').click(function () {
+        //     $('#name-list').html(list[1].name)
+        //     $('#anh1').attr('src', list[1].src)
+        //     $('#counter').text(list[1].counter);
+        // })
+
+        // $('#Anh3').click(function () {
+        //     $('#name-list').html(list[2].name)
+        //     $('#anh1').attr('src', list[2].src)
+        //     $('#counter').text(list[2].counter);
+        // })
+
+        // $('#Anh4').click(function () {
+        //     $('#name-list').html(list[3].name)
+        //     $('#anh1').attr('src', list[3].src)
+        //     $('#counter').text(list[3].counter);
+        // })
+
+        // $('#Anh5').click(function () {
+        //     $('#name-list').html(list[4].name)
+        //     $('#anh1').attr('src', list[4].src)
+        //     $('#counter').text(list[4].counter);
+        // })
+
+        $('#anh1').click(function(){
+            var x = $('img').attr('src')
+            for(i = 0 ; i< list.length; i++){
+                if(x == list[i].src){
+                    list[i].counter += 1;
+                    $('#counter').text(list[i].counter);
+                }
+            }
+        }) 
+            
+    </script>
+</body>
+
+</html>
