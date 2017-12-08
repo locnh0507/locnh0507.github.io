@@ -27,7 +27,7 @@ $(document).ready(function () {
 
         currentCoffee: {
             name: 'coffee 1',
-            src: 'img/anh1.png',
+            src: 'img/Anh1.png',
             counter: 0
         }
     }
@@ -47,20 +47,14 @@ $(document).ready(function () {
         getcurrentCoffees: function () {
             return model.currentCoffee;
         },
-        getSrc: function () {
-            var src = model.coffee;
-            var srcs = [];
-            for (i = 0; i < src.length; i++) {
-                srcs.push(src[i].src);
-            }
-            // console.log(srcs)
-            return srcs;
+
+        getObj: function () {
+            return model.coffee
         },
 
         getCounter: function () {
-            var counter = model.coffee;
-            var x = $('img').attr('src')
-            console.log(x)        
+            var getCounter = model.coffee;
+            return getCounter;
         },
 
         batdau: function () {
@@ -71,13 +65,12 @@ $(document).ready(function () {
     //var coffee = {};
     //coffee.name = "abc";
     var view = {
-
         // view.thiscoffeeNames 
         khoitao: function () {
-            
             this.listcoffeeNames = controller.getListName();
             this.currentCoffee = controller.getcurrentCoffees();
-            this.srcs = controller.getSrc();
+            this.getCounter = controller.getCounter();
+            this.getObj = controller.getObj();
             view.hienthi();
         },
 
@@ -88,36 +81,35 @@ $(document).ready(function () {
                 html += '<li data-name=' + i + '>' + listcoffeeNames[i] + '</li>';
             }
             $('#list').html(html);
-            // $('#name').text(this.currentCoffee.name);
-            // $('#counter').text(this.currentCoffee.counter);
-            // $('img').attr("src", this.currentCoffee.src);
-            var srcs = this.srcs
-            // console.log(srcs);
+            $('#name').text(this.currentCoffee.name);
+            $('#counter').text(this.currentCoffee.counter);
+            $('img').attr("src", this.currentCoffee.src);
+
+            var currentCoffee = this.currentCoffee;
+            console.log(currentCoffee);  
+            var getObj = this.getObj;
             $('li').click(function () {
                 var selected = $(this).attr('data-name')
-                $('img').attr('src', srcs[selected])
-                $('#name').text(listcoffeeNames[selected]);
-                $('#counter').text(model.coffee[selected].counter);
+                currentCoffee = getObj[selected];
+                console.log(currentCoffee);
+                $('img').attr('src', currentCoffee.src)
+                $('#name').text(currentCoffee.name);
+                $('#counter').text(currentCoffee.counter);
             })
 
-            var arr = model.coffee;
-            $('#anh').click(function () {
+            var getCounter = this.getCounter;
+            $('img').click(function () {
                 var x = $('img').attr('src')
-                console.log(x)
-                for (i = 0; i < arr.length; i++) {
-                    if (x == arr[i].src) {
-                        arr[i].counter += 1;
-                        $('#counter').text(arr[i].counter);
+                // console.log(x)
+                for (i = 0; i < getCounter.length; i++) {
+                    if (x == getCounter[i].src) {
+                        getCounter[i].counter += 1;
+                        $('#counter').text(getCounter[i].counter);
                     }
                 }
             })
-            // $('img').click(function(){
-            //     like++;
-            //     $('#counter').text(like);
-            // })
+
         }
-
     }
-
     controller.batdau();
 })
